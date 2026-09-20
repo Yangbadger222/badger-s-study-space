@@ -1,5 +1,15 @@
 <div align="center">
 
+# Badger's Study Space
+
+> 这是 Badger 的 DeepTutor 学习空间：把教程、论文、实验和可复用的学习伙伴，沉淀成可检索、可复现、可持续维护的知识资产。
+
+<a href="https://github.com/Yangbadger222/badger-s-study-space">个人仓库</a>
+·
+<a href="https://deeptutor.info">DeepTutor 文档</a>
+
+---
+
 <p align="center"><img src="assets/figs/logo/logo.png" alt="DeepTutor logo" height="56" style="vertical-align: middle;">&nbsp;<img src="assets/figs/logo/banner.png" alt="DeepTutor" height="48" style="vertical-align: middle;"></p>
 
 # DeepTutor: Lifelong Personalized Tutoring
