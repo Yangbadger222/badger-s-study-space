@@ -7,13 +7,14 @@ import {
   useEffect,
   useState,
 } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useDevice } from "@/hooks/useDevice";
 import type { ReactNode } from "react";
+import { BadgerMark } from "@/components/common/BadgerMark";
+import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
 
 /* Lets the sidebar dismiss the drawer after a nav click without every layout
    threading a callback down through WorkspaceSidebar/UtilitySidebar. Null on
@@ -110,22 +111,10 @@ export default function AppShell({ sidebar, children }: AppShellProps) {
             >
               <Menu size={18} strokeWidth={1.7} />
             </button>
-            <Link href="/" className="flex items-center gap-1.5">
-              <Image
-                src="/logo.png"
-                alt="DeepTutor"
-                width={20}
-                height={20}
-                className="h-5 w-5"
-              />
-              <Image
-                src="/banner.png"
-                alt="DeepTutor"
-                width={897}
-                height={236}
-                className="h-[18px] w-auto"
-              />
+            <Link href="/" className="flex items-center">
+              <BadgerMark />
             </Link>
+            <LanguageSwitcher compact className="ml-auto" />
           </div>
 
           <div className="min-h-0 flex-1 overflow-hidden">{children}</div>

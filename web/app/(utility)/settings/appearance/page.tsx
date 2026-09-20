@@ -85,7 +85,9 @@ export default function AppearanceSettingsPage() {
               {(["en", "zh"] as const).map((v) => (
                 <button
                   key={v}
+                  type="button"
                   onClick={() => updateLanguage(v)}
+                  aria-pressed={language === v}
                   className={`rounded-md px-2.5 py-1 text-[12px] transition-all ${
                     language === v
                       ? "bg-[var(--card)] font-medium text-[var(--foreground)] shadow-sm"
@@ -107,9 +109,9 @@ export default function AppearanceSettingsPage() {
         )}
       >
         <div className="py-4">
-          {/* Order is intentional: Default (pure-white neutral, the default
-              selection; theme id "snow" kept for stored preferences) →
-              warm-light Cream → warm-dark Dark → cool-dark Glass. */}
+          {/* Keep the stored theme ids stable while presenting the Badger
+              palette first, followed by the alternate light, dark, and glass
+              treatments. */}
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {(
               [
@@ -130,7 +132,7 @@ export default function AppearanceSettingsPage() {
           </div>
           <p className="mt-4 text-[11.5px] leading-relaxed text-[var(--muted-foreground)]/80">
             {t(
-              "Default is a clean pure-white theme with a blue accent. Cream is warm and paper-like with a terracotta accent. Dark keeps Cream's warmth on near-black. Glass adds translucent purple panels on a deep gradient.",
+              "Default is the Badger study palette: warm paper, forest ink, and a muted amber accent. Cream softens the paper tone, Dark uses forest ink for focus, and Glass adds translucent panels for a more atmospheric workspace.",
             )}
           </p>
         </div>

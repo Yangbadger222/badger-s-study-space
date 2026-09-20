@@ -44,6 +44,7 @@ import SessionLoadingView from "@/components/chat/home/SessionLoadingView";
 import FilePreviewDrawer from "@/components/chat/preview/FilePreviewDrawer";
 import { buildSessionActivity } from "@/components/chat/home/SessionActivityPanel";
 import Tooltip from "@/components/common/Tooltip";
+import { BadgerMark } from "@/components/common/BadgerMark";
 import SessionViewerPanel, {
   type SessionViewerPanelHandle,
 } from "@/components/chat/home/SessionViewerPanel";
@@ -653,7 +654,7 @@ export default function ChatPage() {
   // the heading stays stable while they're on the page. State (not useMemo)
   // because the random pick would otherwise mismatch SSR ↔ client hydration.
   const [welcomeGreeting, setWelcomeGreeting] = useState<string>(
-    "What would you like to learn?",
+    "What course are you working on?",
   );
   useEffect(() => {
     const hour = new Date().getHours();
@@ -662,25 +663,25 @@ export default function ChatPage() {
       bucket = [
         "Good morning.",
         "Morning — let's learn something.",
-        "What would you like to learn?",
+        "What course are you working on?",
       ];
     } else if (hour >= 12 && hour < 17) {
       bucket = [
         "Good afternoon.",
         "Afternoon — what's on your mind?",
-        "What would you like to learn?",
+        "Let's make one hard topic click.",
       ];
     } else if (hour >= 17 && hour < 22) {
       bucket = [
         "Good evening.",
         "Evening — what shall we explore?",
-        "What would you like to learn?",
+        "Ready for the next exam block?",
       ];
     } else {
       bucket = [
         "It's late today.",
         "Burning the midnight oil?",
-        "What would you like to learn?",
+        "Choose a lecture, problem set, or project.",
       ];
     }
     setWelcomeGreeting(bucket[Math.floor(Math.random() * bucket.length)]);
@@ -1538,7 +1539,7 @@ export default function ChatPage() {
     () => state.knowledgeBases.find((name) => agentNameSet.has(name)) ?? null,
     [state.knowledgeBases, agentNameSet],
   );
-  // How many times DeepTutor may consult the selected agent this turn. Seeded
+  // How many times Badger Study Desk may consult the selected agent this turn. Seeded
   // from the configured default; the composer's stepper overrides it per turn.
   const [subagentBudget, setSubagentBudget] = useState<number | null>(null);
   useEffect(() => {
@@ -1592,7 +1593,7 @@ export default function ChatPage() {
         config = buildResearchWSConfig(researchConfig);
       }
       // When a connected agent is selected, carry the per-turn consult budget
-      // (how many times DeepTutor may ask it) so the subagent capability uses it.
+      // (how many times Badger Study Desk may ask it) so the subagent capability uses it.
       if (selectedAgent && subagentBudget) {
         config = { ...(config ?? {}), subagent_consult_budget: subagentBudget };
       }
@@ -1980,18 +1981,16 @@ export default function ChatPage() {
               </div>
             ) : !hasMessages ? (
               <div className="flex w-full flex-1 min-h-0 items-end justify-center pb-14 animate-fade-in px-6">
-                <div className="w-full max-w-[960px] flex items-center justify-center gap-4">
-                  <img
-                    src="/logo_black.png"
-                    alt="DeepTutor"
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 select-none"
-                    draggable={false}
-                  />
-                  <h1 className="font-serif text-[40px] font-medium leading-[1.1] tracking-[-0.015em] text-[var(--foreground)]">
-                    {t(welcomeGreeting)}
-                  </h1>
+                <div className="w-full max-w-[960px] flex flex-col items-center justify-center gap-4">
+                  <BadgerMark />
+                  <div className="text-center">
+                    <p className="mb-2 text-[10px] font-semibold tracking-[0.18em] text-[var(--muted-foreground)]">
+                      {t("Course study desk")}
+                    </p>
+                    <h1 className="font-serif text-[40px] font-medium leading-[1.1] tracking-[-0.015em] text-[var(--foreground)]">
+                      {t(welcomeGreeting)}
+                    </h1>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -2266,7 +2265,7 @@ function SubagentTabWatcher({
   viewerPanelRef: React.MutableRefObject<SessionViewerPanelHandle | null>;
 }) {
   useEffect(() => {
-    // Group by turn so all of one turn's consults (DeepTutor may ask the agent
+    // Group by turn so all of one turn's consults (Badger Study Desk may ask the agent
     // several questions in a row, each its own tool call) land in one tab as a
     // single running dialogue; fall back to the call id when no turn is set.
     const groups = new Map<string, { label: string; events: StreamEvent[] }>();

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
@@ -32,6 +31,8 @@ import type { SessionSummary } from "@/lib/session-api";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { useCapabilityAccess } from "@/components/access/CapabilityAccessContext";
 import type { Capability } from "@/lib/capability-routes";
+import { BadgerMark } from "@/components/common/BadgerMark";
+import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
 
 interface NavEntry {
   href: string;
@@ -45,9 +46,9 @@ interface NavEntry {
 const PRIMARY_NAV: NavEntry[] = [
   {
     href: "/home",
-    label: "Home",
+    label: "Study Desk",
     icon: House,
-    tooltipKey: "Home tooltip",
+    tooltipKey: "Study Desk tooltip",
     requires: "llm",
   },
   {
@@ -69,23 +70,23 @@ const PRIMARY_NAV: NavEntry[] = [
   },
   {
     href: "/co-writer",
-    label: "Co-Writer",
+    label: "Course Notes",
     icon: PenLine,
-    tooltipKey: "Co-Writer tooltip",
+    tooltipKey: "Course Notes tooltip",
     requires: "llm",
   },
   {
     href: "/book",
-    label: "Book",
+    label: "Study Books",
     icon: Library,
-    tooltipKey: "Book tooltip",
+    tooltipKey: "Study Books tooltip",
     requires: "llm",
   },
   {
     href: "/space",
-    label: "Learning Space",
+    label: "Course Space",
     icon: LayoutGrid,
-    tooltipKey: "Space tooltip",
+    tooltipKey: "Course Space tooltip",
   },
 ];
 
@@ -104,15 +105,15 @@ const SECONDARY_NAV: NavEntry[] = [
     // KBs and retrieval engines, not a daily workspace. Never gated — embedding
     // / search are shared admin infrastructure, no per-user model grant needed.
     href: "/knowledge",
-    label: "Knowledge Center",
+    label: "Course Library",
     icon: BookOpen,
-    tooltipKey: "Knowledge tooltip",
+    tooltipKey: "Course Library tooltip",
   },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
-const GITHUB_REPO_URL = "https://github.com/HKUDS/DeepTutor";
-const DOCS_URL = "https://deeptutor.info/";
-const RECENTS_COLLAPSED_KEY = "deeptutor.sidebar.recentsCollapsed";
+const GITHUB_REPO_URL = "https://github.com/Yangbadger222/badger-s-study-space";
+const DOCS_URL = "https://github.com/Yangbadger222/badger-s-study-space#readme";
+const RECENTS_COLLAPSED_KEY = "badger.sidebar.recentsCollapsed";
 
 interface SidebarShellProps {
   sessions?: SessionSummary[];
@@ -209,16 +210,10 @@ export function SidebarShell({
         <div className="relative mb-2 flex h-9 w-9 items-center justify-center">
           <Link
             href="/"
-            aria-label="DeepTutor"
+            aria-label={t("Badger Study Desk") as string}
             className="flex items-center justify-center transition-opacity duration-150 group-hover/sb:opacity-0"
           >
-            <Image
-              src="/logo.png"
-              alt="DeepTutor"
-              width={22}
-              height={22}
-              className="h-[22px] w-[22px] rounded-md"
-            />
+            <BadgerMark compact />
           </Link>
           <button
             onClick={() => setCollapsed(false)}
@@ -308,6 +303,7 @@ export function SidebarShell({
               </Link>
             );
           })}
+          <LanguageSwitcher compact />
           {renderedFooter}
           <a
             href={DOCS_URL}
@@ -340,22 +336,8 @@ export function SidebarShell({
     <aside className="flex w-[220px] h-dvh shrink-0 flex-col bg-[var(--secondary)] transition-all duration-200">
       {/* Header: logo + collapse toggle */}
       <div className="flex h-14 items-center justify-between px-4">
-        <Link href="/" className="group flex items-center gap-1.5">
-          <Image
-            src="/logo.png"
-            alt="DeepTutor"
-            width={22}
-            height={22}
-            className="h-[22px] w-[22px] transition-transform duration-200 group-hover:scale-105"
-          />
-          <Image
-            src="/banner.png"
-            alt="DeepTutor"
-            width={897}
-            height={236}
-            priority
-            className="h-[22px] w-auto transition-transform duration-200 group-hover:scale-105"
-          />
+        <Link href="/" className="group flex items-center">
+          <BadgerMark />
         </Link>
         {/* The rail is a desktop affordance; in the drawer the scrim and the
             top-bar toggle already own "make this go away". */}
@@ -490,6 +472,7 @@ export function SidebarShell({
             </Link>
           );
         })}
+        <LanguageSwitcher />
         {renderedFooter}
         <div className="mt-0.5 flex items-center gap-0.5">
           <VersionBadge />

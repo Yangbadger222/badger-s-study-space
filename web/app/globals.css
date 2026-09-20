@@ -5,8 +5,8 @@
 @layer base {
   /* ────────────────────────────────────────────────────────────────────────
      Theme palettes — four families:
-       • Default (.theme-snow) → pure-white neutral greys, blue accent
-       • Cream (:root) and Dark (.dark) → warm family, terracotta accent
+       • Default (.theme-snow) → warm paper, forest ink, amber accent
+       • Cream (:root) and Dark (.dark) → the same Badger study palette
        • Glass (.theme-glass) → translucent purple on near-black
      Tokens that every theme must publish:
        --background, --foreground, --card / --popover (+ their -foreground),
@@ -29,73 +29,71 @@
     --card-foreground: #1c1816;
     --popover: #ffffff;
     --popover-foreground: #1c1816;
-    --primary: #b0501e;
-    --primary-foreground: #ffffff;
-    --secondary: #f5f2ea;
-    --secondary-foreground: #1c1816;
-    --muted: #f1ede2;
-    --muted-foreground: #6d645a;
-    --accent: #ece7d8;
-    --accent-foreground: #1c1816;
-    --destructive: #c53a2c;
-    --destructive-foreground: #ffffff;
-    --border: #e6decc;
-    --input: #e6decc;
-    --ring: #b0501e;
-    --overlay: rgba(28, 24, 22, 0.42);
+    --primary: #456d58;
+    --primary-foreground: #fffefa;
+    --secondary: #eef0e8;
+    --secondary-foreground: #253029;
+    --muted: #f3efe2;
+    --muted-foreground: #68736d;
+    --accent: #ead7a9;
+    --accent-foreground: #253029;
+    --destructive: #b74638;
+    --destructive-foreground: #fffefa;
+    --border: #dce2d6;
+    --input: #dce2d6;
+    --ring: #456d58;
+    --overlay: rgba(37, 48, 41, 0.42);
   }
 
-  /* Dark — warm near-black, same terracotta family as Cream. */
+  /* Dark — ink and forest with a soft amber interaction accent. */
   .dark {
     color-scheme: dark;
-    --background: #1a1918;
-    --foreground: #e8e4de;
-    --card: #242220;
-    --card-foreground: #e8e4de;
-    --popover: #242220;
-    --popover-foreground: #e8e4de;
-    --primary: #d4734b;
-    --primary-foreground: #1a1918;
-    --secondary: #2a2725;
-    --secondary-foreground: #e8e4de;
-    --muted: #2a2725;
-    --muted-foreground: #9b9590;
-    --accent: #302d2a;
-    --accent-foreground: #e8e4de;
-    --destructive: #d44a3c;
-    --destructive-foreground: #ffffff;
-    --border: #3a3634;
-    --input: #3a3634;
-    --ring: #d4734b;
-    --overlay: rgba(0, 0, 0, 0.6);
+    --background: #171c19;
+    --foreground: #e8eee8;
+    --card: #202923;
+    --card-foreground: #e8eee8;
+    --popover: #202923;
+    --popover-foreground: #e8eee8;
+    --primary: #b7c98b;
+    --primary-foreground: #1b241e;
+    --secondary: #252e28;
+    --secondary-foreground: #e8eee8;
+    --muted: #2a352e;
+    --muted-foreground: #a2afa4;
+    --accent: #3b493d;
+    --accent-foreground: #eef3ec;
+    --destructive: #d36e5b;
+    --destructive-foreground: #1b201c;
+    --border: #3a493e;
+    --input: #3a493e;
+    --ring: #b7c98b;
+    --overlay: rgba(0, 0, 0, 0.62);
   }
 
-  /* Default — pure-white neutral canvas (theme id "snow" kept for stored
-     preferences). No tint anywhere: flat #fff bg, plain grey surfaces and
-     borders. The only chroma is the blue primary on interactive accents,
-     in the spirit of Codex/ChatGPT chrome. */
+  /* Default Badger palette — warm paper, forest ink, and a muted amber study
+     accent. The theme id "snow" stays stable for stored preferences. */
   .theme-snow {
     color-scheme: light;
-    --background: #ffffff;
-    --foreground: #0d0d0d;
-    --card: #ffffff;
-    --card-foreground: #0d0d0d;
-    --popover: #ffffff;
-    --popover-foreground: #0d0d0d;
-    --primary: #2563eb;
-    --primary-foreground: #ffffff;
-    --secondary: #f7f7f7;
-    --secondary-foreground: #0d0d0d;
-    --muted: #f2f2f2;
-    --muted-foreground: #6e6e6e;
-    --accent: #ececec;
-    --accent-foreground: #0d0d0d;
-    --destructive: #d92d20;
-    --destructive-foreground: #ffffff;
-    --border: #e5e5e5;
-    --input: #e5e5e5;
-    --ring: #2563eb;
-    --overlay: rgba(0, 0, 0, 0.4);
+    --background: #fbfaf6;
+    --foreground: #1f2a2a;
+    --card: #fffefa;
+    --card-foreground: #1f2a2a;
+    --popover: #fffefa;
+    --popover-foreground: #1f2a2a;
+    --primary: #2f5d50;
+    --primary-foreground: #fffefa;
+    --secondary: #f0f1e9;
+    --secondary-foreground: #1f2a2a;
+    --muted: #f3efe3;
+    --muted-foreground: #68736d;
+    --accent: #f0d9a6;
+    --accent-foreground: #1f2a2a;
+    --destructive: #b74638;
+    --destructive-foreground: #fffefa;
+    --border: #dfe3d5;
+    --input: #dfe3d5;
+    --ring: #2f5d50;
+    --overlay: rgba(31, 42, 42, 0.38);
   }
 
   /* Glass — translucent purple panels on near-black. Slightly brighter

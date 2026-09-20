@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Loader2, X } from "lucide-react";
+import { BadgerMark } from "@/components/common/BadgerMark";
 
 /**
  * Indeterminate loading overlay shown while a chat session is fetched from
@@ -45,16 +46,9 @@ export default function SessionLoadingView({
         </button>
       ) : null}
 
-      {/* Logo + spinner */}
+      {/* Product mark + spinner */}
       <div className="flex items-center gap-3">
-        <img
-          src="/logo_black.png"
-          alt="DeepTutor"
-          width={32}
-          height={32}
-          className="h-8 w-8 select-none"
-          draggable={false}
-        />
+        <BadgerMark compact />
         <Loader2 className="h-5 w-5 animate-spin text-[var(--primary)]" />
       </div>
 

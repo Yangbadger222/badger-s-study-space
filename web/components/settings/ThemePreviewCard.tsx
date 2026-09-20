@@ -23,33 +23,32 @@ type Palette = {
 };
 
 const PALETTES: Record<Theme, Palette> = {
-  // theme id "light" applies no class → :root Cream palette (warm parchment,
-  // the default; renamed from generic "Light" to honestly signal its warmth)
+  // theme id "light" applies no class → :root Cream palette.
   light: {
     bg: "#fdfcf9",
-    fg: "#1c1816",
-    card: "#ffffff",
-    primary: "#b0501e",
-    muted: "#f1ede2",
-    border: "#e6decc",
+    fg: "#253029",
+    card: "#fffefa",
+    primary: "#456d58",
+    muted: "#f3efe2",
+    border: "#dce2d6",
   },
-  // theme id "snow" applies the .theme-snow class → "Default": pure-white
-  // neutral palette, grey surfaces, blue primary (Codex-style chrome)
+  // theme id "snow" applies the .theme-snow class → "Default": warm paper,
+  // forest ink, and a muted amber interaction accent.
   snow: {
-    bg: "#ffffff",
-    fg: "#0d0d0d",
-    card: "#ffffff",
-    primary: "#2563eb",
-    muted: "#f2f2f2",
-    border: "#e5e5e5",
+    bg: "#fbfaf6",
+    fg: "#1f2a2a",
+    card: "#fffefa",
+    primary: "#2f5d50",
+    muted: "#f3efe3",
+    border: "#dfe3d5",
   },
   dark: {
-    bg: "#1a1918",
-    fg: "#e8e4de",
-    card: "#242220",
-    primary: "#d4734b",
-    muted: "#2a2725",
-    border: "#3a3634",
+    bg: "#171c19",
+    fg: "#e8eee8",
+    card: "#202923",
+    primary: "#b7c98b",
+    muted: "#2a352e",
+    border: "#3a493e",
   },
   glass: {
     bg: "#0e0d1a",
@@ -62,7 +61,7 @@ const PALETTES: Record<Theme, Palette> = {
   },
 };
 
-// Renders a miniature DeepTutor UI mockup in the given theme's palette —
+// Renders a miniature Badger Study Desk UI mockup in the given theme's palette —
 // a left sidebar with one highlighted nav row, a content area with two
 // text lines and an accent button. Pure SVG so it stays crisp at any
 // device pixel ratio without leaking real interactive controls.

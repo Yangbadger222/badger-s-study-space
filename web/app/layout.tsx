@@ -6,8 +6,8 @@ import ToastViewport from "@/components/common/ToastViewport";
 import { AppShellProvider } from "@/context/AppShellContext";
 import { I18nClientBridge } from "@/i18n/I18nClientBridge";
 
-// Geist matches the public site (deeptutor.info) and stays crisp at the
-// small UI sizes the composer/toolbars use, unlike the rounder Jakarta.
+// Geist stays crisp at the small UI sizes the composer/toolbars use, unlike
+// the rounder Jakarta.
 const fontSans = Geist({
   subsets: ["latin"],
   display: "swap",
@@ -21,8 +21,9 @@ const fontSerif = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "DeepTutor",
-  description: "Agent-native intelligent learning companion",
+  title: "Badger Study Desk",
+  description:
+    "A focused study desk for advanced undergraduate courses, problem sets, projects, and exam review.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
